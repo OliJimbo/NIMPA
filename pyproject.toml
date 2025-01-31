@@ -1,7 +1,7 @@
 [build-system]
 # cuvec>=2.8.0
 requires = ["setuptools>=42", "wheel", "setuptools_scm[toml]>=3.4",
-            "ninst @ git+https://github.com/OliJimbo/NInst/NInst.git@main", "cuvec-base", "miutil[cuda]>=0.4.0",
+            "ninst @ git+https://github.com/OliJimbo/NInst/NInst.git@main", "miutil[cuda]>=0.4.0",
             "scikit-build>=0.11.0", "cmake>=3.18", "ninja"]
 build-backend = "setuptools.build_meta"
 
