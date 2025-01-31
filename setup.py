@@ -43,7 +43,7 @@ setup_kwargs = {
             "nimpa/auxdata/*", "nimpa/acr_design/core_mumap/*", "nimpa/acr_design/core_nac/*",
             "nimpa/acr_design/rods/*", "nimpa/acr_design/sampling/*"]}, "install_requires": [
                 'dcm2niix', 'dipy>=1.3.0', 'imageio', 'miutil[nii]>=0.10.0', 'nibabel>=2.4.0',
-                'ninst>=0.12.0', 'numpy>=1.14', 'pydicom>=1.0.2', 'scipy', 'setuptools', 'spm12',
+                'ninst @ git+https://github.com/OliJimbo/NInst/NInst.git@main', 'numpy>=1.14', 'pydicom>=1.0.2', 'scipy', 'setuptools', 'spm12',
                 'SimpleITK']}
 # 'SimpleITK>=1.2.0'
 cmake_args = [
@@ -68,7 +68,7 @@ except Exception as exc:
     log.warning("Import or CUDA device detection error:\n%s", exc)
     setup(**setup_kwargs)
 else:
-    setup_kwargs['install_requires'].extend(["cuvec>=2.3.1", "numcu"])
+    setup_kwargs['install_requires'].extend(["numcu"])
     for i in (Path(__file__).resolve().parent / "_skbuild").rglob("CMakeCache.txt"):
         i.write_text(re.sub("^//.*$\n^[^#].*pip-build-env.*$", "", i.read_text(), flags=re.M))
     sksetup(cmake_source_dir="niftypet", cmake_languages=("C", "CXX", "CUDA"),
